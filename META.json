@@ -1,0 +1,62 @@
+{
+   "abstract" : "unknown",
+   "author" : [
+      "unknown"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "ExtUtils::MakeMaker version 6.94, CPAN::Meta::Converter version 2.133380",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Test-Cmd",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "6.3"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Config" : "0",
+            "Cwd" : "0",
+            "Exporter" : "0",
+            "File::Basename" : "0",
+            "File::Copy" : "0",
+            "File::Find" : "0",
+            "File::Spec" : "0",
+            "perl" : "5.006",
+            "strict" : "0",
+            "warnings" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test" : "0"
+         }
+      }
+   },
+   "release_status" : "testing",
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/neilbowers/Test-Cmd.git",
+         "web" : "https://github.com/neilbowers/Test-Cmd"
+      }
+   },
+   "version" : "1.05_01"
+}

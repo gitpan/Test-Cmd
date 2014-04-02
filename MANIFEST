@@ -1,6 +1,6 @@
 Changes
-Cmd.pm
-Common.pm
+lib/Test/Cmd.pm
+lib/Test/Cmd/Common.pm
 MANIFEST
 Makefile.PL
 README
@@ -46,3 +46,5 @@ t/Common/subdir.t
 t/Common/touch.t
 t/Common/unlink.t
 t/Common/write.t
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)

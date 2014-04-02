@@ -4,6 +4,12 @@
 
 use ExtUtils::MakeMaker;
 
+my $mm_ver = $ExtUtils::MakeMaker::VERSION;
+if ($mm_ver =~ /_/) { # dev version
+    $mm_ver = eval $mm_ver;
+    die $@ if $@;
+}
+
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 
@@ -35,16 +41,59 @@ $(DISTNAME)-Common-$(VERSION).txt:	Common.pm
 ';
 }
 
-@tests = (glob('t/*.t'), glob('t/Common/*.t'));
-
 WriteMakefile(
     'NAME'	=> 'Test::Cmd',
-    'VERSION_FROM' => 'Cmd.pm', # finds $VERSION
-    'PM'	=> {
-			'Cmd.pm'	=> '$(INST_LIBDIR)/Cmd.pm',
-			'Common.pm'	=> '$(INST_LIBDIR)/Cmd/Common.pm',
-		},
-    'test'	=> {
-			'TESTS' => "@tests",
-		},
+    'VERSION_FROM' => 'lib/Test/Cmd.pm',
+
+    PREREQ_PM => {
+        'strict'            => 0,
+        'warnings'          => 0,
+        'Exporter'          => 0,
+        'File::Basename'    => 0,
+        'File::Find'        => 0,
+        'File::Spec'        => 0,
+        'Config'            => 0,
+        'Cwd'               => 0,
+        'File::Copy'        => 0,
+    },
+
+    ($mm_ver >= 6.52
+        ? (CONFIGURE_REQUIRES => {
+                'ExtUtils::MakeMaker' => 6.30,
+          })
+        : ()
+    ),
+
+    ($mm_ver >= 6.64
+        ? (TEST_REQUIRES => {
+                'Test' => 0,
+          })
+        : ()
+    ),
+
+    ($mm_ver >= 6.48
+        ? (MIN_PERL_VERSION => 5.006)
+        : ()
+    ),
+
+    ($mm_ver >= 6.31
+        ? (LICENSE => 'perl')
+        : ()
+    ),
+
+    ($mm_ver <= 6.45
+        ? ()
+        : (META_MERGE => {
+            'meta-spec' => { version => 2 },
+            resources => {
+                repository  => {
+                    type => 'git',
+                    web  => 'https://github.com/neilbowers/Test-Cmd',
+                    url  => 'git://github.com/neilbowers/Test-Cmd.git',
+                },
+            },
+          })
+    ),
+
+
 );

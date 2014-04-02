@@ -9,16 +9,17 @@
 
 package Test::Cmd;
 
+use 5.006;
 use strict;
-use vars qw($VERSION @ISA @EXPORT_OK);
+use warnings;
 use Exporter;
 use File::Basename ();	# don't import the basename() method, we redefine it
 use File::Find;
 use File::Spec;
 
-$VERSION = '1.05';
-@ISA = qw(Exporter File::Spec);
-@EXPORT_OK = qw(match_exact match_regex diff_exact diff_regex);
+our $VERSION = '1.05_01';
+our @ISA = qw(Exporter File::Spec);
+our @EXPORT_OK = qw(match_exact match_regex diff_exact diff_regex);
 
 
 
@@ -466,7 +467,7 @@ END {
 Create a new C<Test::Cmd> environment.  Arguments with which to initialize
 the environment are passed in as keyword-value pairs.  Fails if a
 specified temporary working directory or subdirectory cannot be created.
-Does NOT die or exit on failure, but returns FALSE if the test environment
+Does NOT die or exit on failure, but returns C<undef> if the test environment
 object cannot be created.
 
 =cut
@@ -1571,7 +1572,7 @@ the suffix for a directly-executable Perl script.)
 How to make a file or script executable varies widely from system to
 system, some systems using file name extensions to indicate executability,
 others using a file permission bit.  The differences are complicated to
-accomodate in a portable test script.  The easiest way to deal with this
+accommodate in a portable test script.  The easiest way to deal with this
 complexity is to avoid it if you can.
 
 If your test somehow requires executing a script that you generate
@@ -1606,7 +1607,7 @@ the appropriate magic that will execute it as a Perl script:
 	$output = `script`;
 	ok($output eq "$line\n");
 
-=back 4
+=back
 
 Addtional hints on writing portable tests are welcome.
 
@@ -1629,6 +1630,10 @@ large number of end-to-end application tests.  The suite, and other
 information about Cons, is available at:
 
 	http://www.dsmit.com/cons
+
+=head1 REPOSITORY
+
+L<https://github.com/neilbowers/Test-Cmd>
 
 =head1 AUTHORS
 
