@@ -17,7 +17,7 @@ use File::Basename ();	# don't import the basename() method, we redefine it
 use File::Find;
 use File::Spec;
 
-our $VERSION = '1.05_01';
+our $VERSION = '1.05_02';
 our @ISA = qw(Exporter File::Spec);
 our @EXPORT_OK = qw(match_exact match_regex diff_exact diff_regex);
 
@@ -497,6 +497,7 @@ sub new {
 	    return undef;
 	}
     }
+    push @Cleanup, $self;
     if (defined $self->{'subdir'}) {
 	if (! $self->subdir($self->{'subdir'})) {
 	    return undef;
@@ -507,7 +508,6 @@ sub new {
 
     $self->match_sub($self->{'match_sub'} || \&Test::Cmd::match_regex);
 
-    push @Cleanup, $self;
 
     $self;
 }
