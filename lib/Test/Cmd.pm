@@ -17,7 +17,7 @@ use File::Basename ();	# don't import the basename() method, we redefine it
 use File::Find;
 use File::Spec;
 
-our $VERSION = '1.05_02';
+our $VERSION = '1.06';
 our @ISA = qw(Exporter File::Spec);
 our @EXPORT_OK = qw(match_exact match_regex diff_exact diff_regex);
 
@@ -1638,6 +1638,8 @@ L<https://github.com/neilbowers/Test-Cmd>
 =head1 AUTHORS
 
 Steven Knight, knight@baldmt.com
+
+This module is now being maintained by Neil Bowers E<lt>neilb@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 

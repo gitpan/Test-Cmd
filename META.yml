@@ -31,4 +31,4 @@ requires:
   warnings: 0
 resources:
   repository: git://github.com/neilbowers/Test-Cmd.git
-version: 1.05_02
+version: 1.06
